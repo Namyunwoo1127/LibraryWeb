@@ -42,6 +42,7 @@
             border: 1px solid #666;
             padding: 10px 20px;
             font-weight: bold;
+            cursor: pointer;
         }
         
         .user-menu {
@@ -171,6 +172,11 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            cursor: pointer;
+        }
+        
+        .book-item:hover {
+            background-color: #f0f0f0;
         }
         
         /* 우측 사이드바 */
@@ -251,17 +257,48 @@
     <div class="container">
         <!-- 헤더 -->
         <div class="header">
-            <div class="logo">도서관 로고</div>
+            <div class="logo" onclick="location.href='index.jsp'">도서관 로고</div>
             <div class="user-menu">
-                <div onclick="location.href='member/login.jsp'">마이페이지</div>
+                <%
+                    // 세션에서 로그인 정보 확인
+                    String loginUser = (String)session.getAttribute("loginUser");
+                    if(loginUser != null) {
+                %>
+                    <!-- 로그인 상태 -->
+                    <div onclick="location.href='member/mypage'"><%=loginUser%>님</div>
+                    <div onclick="location.href='member/rentals'">내 대여현황</div>
+                    <div onclick="location.href='member/logout'">로그아웃</div>
+                <%
+                    } else {
+                %>
+                    <!-- 비로그인 상태 -->
+                    <div onclick="location.href='member/login'">로그인</div>
+                    <div onclick="location.href='member/join.jsp'">회원가입</div>
+                <%
+                    }
+                %>
                 <div onclick="location.href='admin/adminLogin.jsp'">관리자 로그인</div>
             </div>
         </div>
         
+        <!-- 성공 메시지 표시 -->
+        <%
+            String successMsg = (String)session.getAttribute("successMsg");
+            if(successMsg != null) {
+                // 메시지 표시 후 세션에서 제거 (한 번만 표시되도록)
+                session.removeAttribute("successMsg");
+        %>
+        <div style="background-color: #d4edda; color: #155724; padding: 15px; border: 1px solid #c3e6cb; margin: 20px; text-align: center;">
+            <%= successMsg %>
+        </div>
+        <%
+            }
+        %>
+        
         <!-- 검색 영역 -->
         <div class="search-section">
             <div class="search-title">도서 검색</div>
-            <form action="book/bookSearch.jsp" method="get">
+            <form action="book/search" method="get">
                 <div class="search-box">
                     <input type="text" name="keyword" class="search-input" placeholder="도서명, 저자, 출판사를 입력하세요">
                     <button type="submit" class="search-btn">검색</button>
@@ -280,9 +317,12 @@
             <!-- 왼쪽 사이드바 -->
             <div class="sidebar">
                 <!-- 로그인 영역 -->
+                <%
+                    if(loginUser == null) {
+                %>
                 <div class="login-section">
                     <div class="sidebar-title">로그인</div>
-                    <form class="login-form" action="LoginServlet" method="post">
+                    <form class="login-form" action="member/login" method="post">
                         <input type="text" name="userId" placeholder="아이디" style="width: 100%; padding: 8px; margin-bottom: 8px; border: 1px solid #666;" required>
                         <input type="password" name="password" placeholder="비밀번호" style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #666;" required>
                         <button type="submit" style="width: 100%; padding: 10px; border: 1px solid #666; background-color: white; cursor: pointer;">로그인</button>
@@ -292,6 +332,19 @@
                         <a href="member/findPassword.jsp" style="text-decoration: none; color: #666;">비밀번호 찾기</a>
                     </div>
                 </div>
+                <%
+                    } else {
+                %>
+                <!-- 로그인 후 사용자 메뉴 -->
+                <div class="login-section">
+                    <div class="sidebar-title"><%=loginUser%>님 환영합니다</div>
+                    <div class="menu-item" onclick="location.href='member/mypage.jsp'">개인정보 수정</div>
+                    <div class="menu-item" onclick="location.href='member/myRentals.jsp'">내 대여현황</div>
+                    <div class="menu-item" onclick="location.href='member/logout'">로그아웃</div>
+                </div>
+                <%
+                    }
+                %>
                 
                 <!-- 도서 카테고리 -->
                 <div style="margin-top: 30px;">
@@ -311,13 +364,14 @@
                     <div class="section-title">인기 도서</div>
                     <div class="book-grid">
                         <%
-                        // 실제로는 DB에서 인기 도서 목록을 가져와야 합니다
+                        // 실제로는 서블릿에서 DB 데이터를 받아와야 함
+                        // 임시 데이터로 처리
                         String[] popularBooks = {"Java 프로그래밍", "웹 개발 완전정복", "데이터베이스 설계", "알고리즘 기초", "HTML/CSS 기초", "JavaScript 완벽가이드", "Python 데이터분석", "AI 프로그래밍"};
                         String[] authors = {"김자바", "박웹개발", "이디비", "최알고", "홍HTML", "정자바스크립트", "이파이썬", "박AI"};
                         
                         for(int i = 0; i < popularBooks.length; i++) {
                         %>
-                        <div class="book-item" onclick="location.href='book/bookDetail.jsp?bookId=<%=i+1%>'">
+                        <div class="book-item" onclick="location.href='book/detail?bookId=<%=i+1%>'">
                             <div>도서 이미지</div>
                             <div><%=popularBooks[i]%></div>
                             <div><%=authors[i]%></div>
@@ -338,7 +392,7 @@
                         
                         for(int i = 0; i < newBooks.length; i++) {
                         %>
-                        <div class="book-item" onclick="location.href='book/bookDetail.jsp?bookId=<%=i+9%>'">
+                        <div class="book-item" onclick="location.href='book/detail?bookId=<%=i+9%>'">
                             <div>도서 이미지</div>
                             <div><%=newBooks[i]%></div>
                             <div><%=newAuthors[i]%></div>
@@ -356,7 +410,7 @@
                 <div class="widget">
                     <div class="widget-title">도서관 현황</div>
                     <%
-                    // 실제로는 DB에서 통계를 가져와야 합니다
+                    // 실제로는 서블릿에서 DB 통계를 가져와야 함
                     int totalBooks = 12543;
                     int availableBooks = 9821;
                     int rentedBooks = 2722;
@@ -411,7 +465,7 @@
 
     <script>
         function searchByCategory(category) {
-            location.href = 'book/bookSearch.jsp?searchType=category&keyword=' + encodeURIComponent(category);
+            location.href = 'book/search?searchType=category&keyword=' + encodeURIComponent(category);
         }
     </script>
 </body>
