@@ -1,4 +1,4 @@
-package com.library.controller;
+package com.library.controller.book;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,16 +8,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Servlet implementation class JoinServlet
+ * Servlet implementation class BookSearchServlet
  */
-@WebServlet("/member/join")
-public class JoinServlet extends HttpServlet {
+@WebServlet("/book/search")
+public class BookSearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public JoinServlet() {
+    public BookSearchServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

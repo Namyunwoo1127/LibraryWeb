@@ -1,24 +1,23 @@
-package com.library.controller;
+package com.library.controller.member;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * Servlet implementation class LogOutServlet
+ * Servlet implementation class JoinServlet
  */
-@WebServlet("/member/logout")
-public class LogOutServlet extends HttpServlet {
+@WebServlet("/member/join")
+public class JoinServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LogOutServlet() {
+    public JoinServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,21 +26,8 @@ public class LogOutServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		HttpSession session = request.getSession(false);
-		
-		if(session != null) {
-			String userName = (String)session.getAttribute("loginUser");
-			
-			session.invalidate();
-			
-			session = request.getSession();
-			if(userName != null) {
-				session.setAttribute("successMsg", userName + "님, 안전하게 로그아웃 되었습니다.");
-			}
-		}
-		
-		response.sendRedirect(request.getContextPath() + "/index.jsp");
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

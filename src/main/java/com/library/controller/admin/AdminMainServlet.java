@@ -1,4 +1,4 @@
-package com.library.controller;
+package com.library.controller.admin;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,16 +8,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Servlet implementation class BookSearchServlet
+ * Servlet implementation class AdminMainServlet
  */
-@WebServlet("/book/search")
-public class BookSearchServlet extends HttpServlet {
+@WebServlet("/admin/main")
+public class AdminMainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BookSearchServlet() {
+    public AdminMainServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
