@@ -120,35 +120,55 @@
             <div class="page-title">회원가입</div>
             
             <div class="form-container">
-                <form>
+               <form action="/member/join" method="post">
                     <div class="form-group">
                         <label>아이디</label>
-                        <input type="text" placeholder="아이디를 입력하세요">
+                        <input type="text" name="memberId" placeholder="아이디를 입력하세요">
                     </div>
                     
-                    <div class="form-group">
-                        <label>비밀번호</label>
-                        <input type="password" placeholder="비밀번호를 입력하세요">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>비밀번호 확인</label>
-                        <input type="password" placeholder="비밀번호를 다시 입력하세요">
-                    </div>
+                   <div class="form-group">
+					    <label>비밀번호</label>
+					    <input type="password" name="memberPw" placeholder="비밀번호를 입력하세요">
+					</div>
+				
+					<div class="form-group">
+				   		<label>비밀번호 확인</label>
+				   		<input type="password" name="memberPwConfirm" placeholder="비밀번호를 다시 입력하세요">
+					</div>
                     
                     <div class="form-group">
                         <label>이름</label>
-                        <input type="text" placeholder="이름을 입력하세요">
+                        <input type="text" name = "memberName" placeholder="이름을 입력하세요">
                     </div>
                     
                     <div class="form-group">
-                        <label>이메일</label>
-                        <input type="email" placeholder="이메일을 입력하세요">
+                        <label>성별</label>
+                        <label>
+       					 	<input type="radio" name="memberGender" value="M" checked> 남성
+					    </label>
+					    <label>
+       					 	<input type="radio" name="memberGender" value="F"> 여성
+ 						</label>
                     </div>
                     
                     <div class="form-group">
                         <label>전화번호</label>
-                        <input type="tel" placeholder="전화번호를 입력하세요">
+                        <input type="tel" name="memberPhone" placeholder="전화번호를 입력하세요">
+                    </div>
+                    
+                    <div class="form-group">
+    					<label>나이</label>
+   				 		<input type="number" name="memberAge" placeholder="나이를 입력하세요">
+					</div>
+                    
+                    <div class="form-group">
+                        <label>관리자 설정</label>
+                        <label>
+       					 	<input type="radio" name="adminYn" value="Y" checked> 관리자
+					    </label>
+					    <label>
+       					 	<input type="radio" name="adminYn" value="N"> 일반 회원
+ 						</label>
                     </div>
                     
                     <div class="button-group">
