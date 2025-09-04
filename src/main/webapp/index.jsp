@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+  <%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -308,7 +309,7 @@
             <div class="content">
                 <!-- 인기 도서 섹션 -->
                 <div class="section">
-                    <div class="section-title">인기 도서</div>
+                   <div class="section-title">인기 도서</div>
                     <div class="book-grid">
                         <%
                         // 실제로는 DB에서 인기 도서 목록을 가져와야 합니다
@@ -318,37 +319,22 @@
                         for(int i = 0; i < popularBooks.length; i++) {
                         %>
                         <div class="book-item" onclick="location.href='book/bookDetail.jsp?bookId=<%=i+1%>'">
-                            <div>도서 이미지</div>
+                          <div>
+   					 		<img src="./image/book/popular/데미안_B002.jpg" 
+        						 alt="그림으로 보는 음악사_B032" 
+         						style="width:80px; height:100px">
+							</div>
                             <div><%=popularBooks[i]%></div>
                             <div><%=authors[i]%></div>
                         </div>
-                        <%
-                        }
-                        %>
-                    </div>
-                </div>
-                
-                <!-- 신간 도서 섹션 -->
-                <div class="section">
-                    <div class="section-title">신간 도서</div>
-                    <div class="book-grid">
-                        <%
-                        String[] newBooks = {"Spring Boot 실전", "React 개발 가이드", "머신러닝 입문", "클라우드 컴퓨팅", "Docker & Kubernetes", "Vue.js 시작하기", "블록체인 개발", "모바일 앱 개발"};
-                        String[] newAuthors = {"김스프링", "박리액트", "이머신", "최클라우드", "도커킴", "뷰개발자", "블록체인박", "모바일이"};
                         
-                        for(int i = 0; i < newBooks.length; i++) {
-                        %>
-                        <div class="book-item" onclick="location.href='book/bookDetail.jsp?bookId=<%=i+9%>'">
-                            <div>도서 이미지</div>
-                            <div><%=newBooks[i]%></div>
-                            <div><%=newAuthors[i]%></div>
-                        </div>
                         <%
                         }
                         %>
                     </div>
-                </div>
-            </div>
+				   
+				    </div>
+				</div>
             
             <!-- 우측 사이드바 -->
             <div class="right-sidebar">
