@@ -145,12 +145,26 @@
             <div class="login-container">
                 <div class="login-title">회원 로그인</div>
                 
-                <form class="login-form">
+                <!-- 에러 메시지 표시 -->
+                <%
+                    String errorMsg = (String)request.getAttribute("errorMsg");
+                    String userId = (String)request.getAttribute("userId");
+                    if(errorMsg != null) {
+                %>
+                <div style="color: red; margin-bottom: 15px; padding: 10px; border: 1px solid red; background-color: #ffe6e6;">
+                    <%= errorMsg %>
+                </div>
+                <%
+                    }
+                %>
+                
+                <form class="login-form" action="<%= request.getContextPath() %>/member/login" method="post">
                     <div class="input-group">
-                        <input type="text" placeholder="아이디를 입력하세요" required>
+                        <input type="text" name="userId" placeholder="아이디를 입력하세요" 
+                               value="<%= userId != null ? userId : "" %>" required>
                     </div>
                     <div class="input-group">
-                        <input type="password" placeholder="비밀번호를 입력하세요" required>
+                        <input type="password" name="password" placeholder="비밀번호를 입력하세요" required>
                     </div>
                     <button type="submit" class="login-btn">로그인</button>
                 </form>
