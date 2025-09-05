@@ -188,7 +188,7 @@ public class JDBCTemplate {
         } finally {
             close(conn);
         }
-        ///ㅁㄴㅇㅁㄴㅇㅁㄴㅇ
+        
         return isConnected;
     }
     
