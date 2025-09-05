@@ -164,10 +164,10 @@ public class MemberDAO {
         int result = 0;
         PreparedStatement pstmt = null;
         
-        String sql = "UPDATE MEMBER_TBL SET " +
-                    "MEMBER_PW = ?, MEMBER_NAME = ?, MEMBER_PHONE = ?, " +
-                    "MEMBER_GENDER = ?, MEMBER_AGE = ? " +
-                    "WHERE MEMBER_ID = ?";
+        //관리자 버튼을 삭제함으로서 회원가입시 member_gender 값이 디폴트 'n'으로 들어가도록 코드 수정함
+        String sql = "INSERT INTO MEMBER_TBL " +
+                "(MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_PHONE, MEMBER_GENDER, MEMBER_AGE, MEMBER_GENDER) " +
+                "VALUES (?, ?, ?, ?, ?, ?, DEFAULT)";
         
         try {
             pstmt = conn.prepareStatement(sql);
@@ -177,6 +177,7 @@ public class MemberDAO {
             pstmt.setString(4, member.getMemberGender());
             pstmt.setInt(5, member.getMemberAge());
             pstmt.setString(6, member.getMemberId());
+            pstmt.setString(7, member.getMemberGender());
             
             result = pstmt.executeUpdate();
             

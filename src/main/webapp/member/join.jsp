@@ -161,15 +161,6 @@
    				 		<input type="number" name="memberAge" placeholder="나이를 입력하세요">
 					</div>
                     
-                    <div class="form-group">
-                        <label>관리자 설정</label>
-                        <label>
-       					 	<input type="radio" name="adminYn" value="Y" checked> 관리자
-					    </label>
-					    <label>
-       					 	<input type="radio" name="adminYn" value="N"> 일반 회원
- 						</label>
-                    </div>
                     
                     <div class="button-group">
                         <button type="submit" class="btn">회원가입</button>
