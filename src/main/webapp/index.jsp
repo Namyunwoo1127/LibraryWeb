@@ -5,253 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>도서관 메인페이지</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            line-height: 1.4;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: white;
-        }
-        
-        /* 헤더 영역 */
-        .header {
-            border: 2px solid #333;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #fff;
-        }
-        .user-menu div:last-child {
-        padding: 6px 10px;
-        font-size: 12px;
-        color: #666;
-        }
-        .logo {
-            border: 1px solid #666;
-            padding: 10px 20px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        
-        .user-menu {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .user-menu div {
-            border: 1px solid #666;
-            padding: 8px 15px;
-            cursor: pointer;
-        }
-        
-        /* 검색 영역 */
-        .search-section {
-            border: 2px solid #333;
-            padding: 30px;
-            text-align: center;
-            background-color: #f9f9f9;
-        }
-        
-        .search-title {
-            border: 1px solid #666;
-            padding: 10px;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-        
-        .search-box {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        
-        .search-input {
-            border: 2px solid #333;
-            padding: 12px;
-            width: 400px;
-        }
-        
-        .search-btn {
-            border: 2px solid #333;
-            padding: 12px 25px;
-            background-color: white;
-            cursor: pointer;
-        }
-        
-        .search-options {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        
-        .search-options div {
-            border: 1px solid #666;
-            padding: 8px 15px;
-        }
-        
-        /* 메인 컨텐츠 */
-        .main-content {
-            display: flex;
-            gap: 20px;
-            padding: 20px;
-        }
-        
-        /* 왼쪽 사이드바 */
-        .sidebar {
-            width: 200px;
-            border: 2px solid #333;
-            padding: 20px;
-            height: fit-content;
-        }
-        
-        .login-section {
-            margin-bottom: 20px;
-        }
-        
-        .login-form {
-            margin-top: 10px;
-        }
-        
-        .sidebar-title {
-            border: 1px solid #666;
-            padding: 10px;
-            margin-bottom: 15px;
-            text-align: center;
-            font-weight: bold;
-        }
-        
-        .menu-item {
-            border: 1px solid #666;
-            padding: 10px;
-            margin-bottom: 8px;
-            cursor: pointer;
-        }
-        
-        /* 중앙 콘텐츠 */
-        .content {
-            flex: 1;
-        }
-        
-        .section {
-            border: 2px solid #333;
-            margin-bottom: 20px;
-            padding: 20px;
-        }
-        
-        .section-title {
-            border: 1px solid #666;
-            padding: 10px;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-        
-        .book-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-        }
-        
-        .book-item {
-            border: 1px solid #666;
-            padding: 15px;
-            text-align: center;
-            height: 120px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            cursor: pointer;
-        }
-        
-        .book-item:hover {
-            background-color: #f0f0f0;
-        }
-        
-        /* 우측 사이드바 */
-        .right-sidebar {
-            width: 250px;
-        }
-        
-        .widget {
-            border: 2px solid #333;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .widget-title {
-            border: 1px solid #666;
-            padding: 8px;
-            margin-bottom: 10px;
-            font-weight: bold;
-            text-align: center;
-        }
-        
-        .stats-item {
-            border: 1px solid #666;
-            padding: 10px;
-            margin-bottom: 8px;
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .quick-menu-item {
-            border: 1px solid #666;
-            padding: 12px;
-            margin-bottom: 8px;
-            text-align: center;
-            cursor: pointer;
-        }
-        
-        /* 공지사항 위젯 스타일 */
-        .notice-item {
-            border: 1px solid #666;
-            padding: 8px;
-            margin-bottom: 8px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 12px;
-        }
-        
-        .notice-item:hover {
-            background-color: #f0f0f0;
-        }
-        
-        .notice-title {
-            flex: 1;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            margin-right: 5px;
-        }
-        
-        .notice-date {
-            font-size: 10px;
-            color: #666;
-            white-space: nowrap;
-        }
-        
-        /* 푸터 */
-        .footer {
-            border: 2px solid #333;
-            padding: 20px;
-            text-align: center;
-            background-color: #f9f9f9;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
     <div class="container">
@@ -363,22 +117,46 @@
                 <div class="section">
                     <div class="section-title">인기 도서</div>
                     <div class="book-grid">
-                        <%
-                        // 실제로는 서블릿에서 DB 데이터를 받아와야 함
-                        // 임시 데이터로 처리
-                        String[] popularBooks = {"Java 프로그래밍", "웹 개발 완전정복", "데이터베이스 설계", "알고리즘 기초", "HTML/CSS 기초", "JavaScript 완벽가이드", "Python 데이터분석", "AI 프로그래밍"};
-                        String[] authors = {"김자바", "박웹개발", "이디비", "최알고", "홍HTML", "정자바스크립트", "이파이썬", "박AI"};
-                        
-                        for(int i = 0; i < popularBooks.length; i++) {
-                        %>
-                        <div class="book-item" onclick="location.href='book/detail?bookId=<%=i+1%>'">
+                        <div class="book-item" onclick="location.href='book/detail?bookId=1'">
                             <div>도서 이미지</div>
-                            <div><%=popularBooks[i]%></div>
-                            <div><%=authors[i]%></div>
+                            <div>Java 프로그래밍</div>
+                            <div>김자바</div>
                         </div>
-                        <%
-                        }
-                        %>
+                        <div class="book-item" onclick="location.href='book/detail?bookId=2'">
+                            <div>도서 이미지</div>
+                            <div>웹 개발 완전정복</div>
+                            <div>박웹개발</div>
+                        </div>
+                        <div class="book-item" onclick="location.href='book/detail?bookId=3'">
+                            <div>도서 이미지</div>
+                            <div>데이터베이스 설계</div>
+                            <div>이디비</div>
+                        </div>
+                        <div class="book-item" onclick="location.href='book/detail?bookId=4'">
+                            <div>도서 이미지</div>
+                            <div>알고리즘 기초</div>
+                            <div>최알고</div>
+                        </div>
+                        <div class="book-item" onclick="location.href='book/detail?bookId=5'">
+                            <div>도서 이미지</div>
+                            <div>HTML/CSS 기초</div>
+                            <div>홍HTML</div>
+                        </div>
+                        <div class="book-item" onclick="location.href='book/detail?bookId=6'">
+                            <div>도서 이미지</div>
+                            <div>JavaScript 완벽가이드</div>
+                            <div>정자바스크립트</div>
+                        </div>
+                        <div class="book-item" onclick="location.href='book/detail?bookId=7'">
+                            <div>도서 이미지</div>
+                            <div>Python 데이터분석</div>
+                            <div>이파이썬</div>
+                        </div>
+                        <div class="book-item" onclick="location.href='book/detail?bookId=8'">
+                            <div>도서 이미지</div>
+                            <div>AI 프로그래밍</div>
+                            <div>박AI</div>
+                        </div>
                     </div>
                 </div>
                 
@@ -386,20 +164,46 @@
                 <div class="section">
                     <div class="section-title">신간 도서</div>
                     <div class="book-grid">
-                        <%
-                        String[] newBooks = {"Spring Boot 실전", "React 개발 가이드", "머신러닝 입문", "클라우드 컴퓨팅", "Docker & Kubernetes", "Vue.js 시작하기", "블록체인 개발", "모바일 앱 개발"};
-                        String[] newAuthors = {"김스프링", "박리액트", "이머신", "최클라우드", "도커킴", "뷰개발자", "블록체인박", "모바일이"};
-                        
-                        for(int i = 0; i < newBooks.length; i++) {
-                        %>
-                        <div class="book-item" onclick="location.href='book/detail?bookId=<%=i+9%>'">
+                        <div class="book-item" onclick="location.href='book/detail?bookId=9'">
                             <div>도서 이미지</div>
-                            <div><%=newBooks[i]%></div>
-                            <div><%=newAuthors[i]%></div>
+                            <div>Spring Boot 실전</div>
+                            <div>김스프링</div>
                         </div>
-                        <%
-                        }
-                        %>
+                        <div class="book-item" onclick="location.href='book/detail?bookId=10'">
+                            <div>도서 이미지</div>
+                            <div>React 개발 가이드</div>
+                            <div>박리액트</div>
+                        </div>
+                        <div class="book-item" onclick="location.href='book/detail?bookId=11'">
+                            <div>도서 이미지</div>
+                            <div>머신러닝 입문</div>
+                            <div>이머신</div>
+                        </div>
+                        <div class="book-item" onclick="location.href='book/detail?bookId=12'">
+                            <div>도서 이미지</div>
+                            <div>클라우드 컴퓨팅</div>
+                            <div>최클라우드</div>
+                        </div>
+                        <div class="book-item" onclick="location.href='book/detail?bookId=13'">
+                            <div>도서 이미지</div>
+                            <div>Docker & Kubernetes</div>
+                            <div>도커킴</div>
+                        </div>
+                        <div class="book-item" onclick="location.href='book/detail?bookId=14'">
+                            <div>도서 이미지</div>
+                            <div>Vue.js 시작하기</div>
+                            <div>뷰개발자</div>
+                        </div>
+                        <div class="book-item" onclick="location.href='book/detail?bookId=15'">
+                            <div>도서 이미지</div>
+                            <div>블록체인 개발</div>
+                            <div>블록체인박</div>
+                        </div>
+                        <div class="book-item" onclick="location.href='book/detail?bookId=16'">
+                            <div>도서 이미지</div>
+                            <div>모바일 앱 개발</div>
+                            <div>모바일이</div>
+                        </div>
                     </div>
                 </div>
             </div>
