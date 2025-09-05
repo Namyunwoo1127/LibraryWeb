@@ -35,6 +35,7 @@
             padding: 10px 20px;
             font-weight: bold;
             display: inline-block;
+            cursor: pointer;
         }
         
         .main-content {
@@ -92,6 +93,31 @@
             font-weight: bold;
         }
         
+        .btn:hover {
+            background-color: #f0f0f0;
+        }
+        
+        /* 메시지 스타일 */
+        .message {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 2px solid;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            border-color: #c3e6cb;
+        }
+        
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            border-color: #f5c6cb;
+        }
+        
         .footer {
             border: 2px solid #333;
             padding: 20px;
@@ -103,27 +129,51 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo">도서관 로고</div>
+            <div class="logo" onclick="location.href='<%= request.getContextPath() %>/index.jsp'">도서관 로고</div>
         </div>
         
         <div class="main-content">
             <div class="page-title">비밀번호 찾기</div>
             
             <div class="form-container">
-                <form>
+                <!-- 메시지 표시 영역 -->
+                <%
+                    String successMsg = (String)request.getAttribute("successMsg");
+                    String errorMsg = (String)request.getAttribute("errorMsg");
+                    String foundPassword = (String)request.getAttribute("foundPassword");
+                    
+                    if(successMsg != null && foundPassword != null) {
+                %>
+                <div class="message success-message">
+                    <%= successMsg %><br>
+                    비밀번호: <%= foundPassword %>
+                </div>
+                <%
+                    } else if(errorMsg != null) {
+                %>
+                <div class="message error-message">
+                    <%= errorMsg %>
+                </div>
+                <%
+                    }
+                %>
+                
+                <form action="<%= request.getContextPath() %>/member/findPassword" method="post">
                     <div class="form-group">
                         <label>아이디</label>
-                        <input type="text" placeholder="가입시 입력한 아이디를 입력하세요">
+                        <input type="text" name="memberId" placeholder="가입시 입력한 아이디를 입력하세요" 
+                               value="<%= request.getAttribute("memberId") != null ? request.getAttribute("memberId") : "" %>" required>
                     </div>
                     
                     <div class="form-group">
-                        <label>이메일</label>
-                        <input type="email" placeholder="가입시 입력한 이메일을 입력하세요">
+                        <label>전화번호</label>
+                        <input type="tel" name="memberPhone" placeholder="가입시 입력한 전화번호를 입력하세요 (예: 01012345678)" 
+                               value="<%= request.getAttribute("memberPhone") != null ? request.getAttribute("memberPhone") : "" %>" required>
                     </div>
                     
                     <div class="btn-group">
                         <button type="submit" class="btn">비밀번호 찾기</button>
-                        <button type="button" class="btn">취소</button>
+                        <button type="button" class="btn" onclick="location.href='<%= request.getContextPath() %>/member/login'">로그인으로 돌아가기</button>
                     </div>
                 </form>
             </div>

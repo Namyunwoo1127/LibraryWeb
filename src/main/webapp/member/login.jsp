@@ -38,6 +38,7 @@
             border: 1px solid #666;
             padding: 10px 20px;
             font-weight: bold;
+            cursor: pointer;
         }
         
         .nav-menu {
@@ -120,6 +121,19 @@
             padding: 8px 12px;
         }
         
+        .login-links a:hover {
+            background-color: #f0f0f0;
+        }
+        
+        /* 메시지 스타일 */
+        .error-message {
+            color: red;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid red;
+            background-color: #ffe6e6;
+        }
+        
         /* 푸터 */
         .footer {
             border: 2px solid #333;
@@ -133,10 +147,10 @@
     <div class="container">
         <!-- 헤더 -->
         <div class="header">
-            <div class="logo">도서관 로고</div>
+            <div class="logo" onclick="location.href='<%= request.getContextPath() %>/index.jsp'">도서관 로고</div>
             <div class="nav-menu">
-                <div>홈으로</div>
-                <div onclick="location.href='admin/adminLogin.jsp'">관리자 로그인</div>
+                <div onclick="location.href='<%= request.getContextPath() %>/index.jsp'">홈으로</div>
+                <div onclick="location.href='<%= request.getContextPath() %>/admin/adminLogin.jsp'">관리자 로그인</div>
             </div>
         </div>
         
@@ -151,7 +165,7 @@
                     String userId = (String)request.getAttribute("userId");
                     if(errorMsg != null) {
                 %>
-                <div style="color: red; margin-bottom: 15px; padding: 10px; border: 1px solid red; background-color: #ffe6e6;">
+                <div class="error-message">
                     <%= errorMsg %>
                 </div>
                 <%
@@ -170,8 +184,8 @@
                 </form>
                 
                 <div class="login-links">
-                    <a href="#">회원가입</a>
-                    <a href="#">비밀번호 찾기</a>
+                    <a href="<%= request.getContextPath() %>/member/join.jsp">회원가입</a>
+                    <a href="<%= request.getContextPath() %>/member/findPassword">비밀번호 찾기</a>
                 </div>
             </div>
         </div>

@@ -82,7 +82,7 @@
                     </form>
                     <div style="text-align: center; margin-top: 10px; font-size: 12px;">
                         <a href="member/join.jsp" style="text-decoration: none; color: #666;">회원가입</a> | 
-                        <a href="member/findPassword.jsp" style="text-decoration: none; color: #666;">비밀번호 찾기</a>
+                        <a href="member/findPassword" style="text-decoration: none; color: #666;">비밀번호 찾기</a>
                     </div>
                 </div>
                 <%
