@@ -136,7 +136,7 @@
             <div class="logo">도서관 로고</div>
             <div class="nav-menu">
                 <div>홈으로</div>
-                <div>관리자 로그인</div>
+                <div onclick="location.href='admin/adminLogin.jsp'">관리자 로그인</div>
             </div>
         </div>
         

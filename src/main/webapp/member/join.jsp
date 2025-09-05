@@ -173,7 +173,7 @@
                     
                     <div class="button-group">
                         <button type="submit" class="btn">회원가입</button>
-                        <button type="button" class="btn">취소</button>
+                        <button type="button" class="btn" onclick="location.href='<%= request.getContextPath() %>/'">취소</button>
                     </div>
                 </form>
             </div>

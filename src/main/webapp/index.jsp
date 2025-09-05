@@ -31,7 +31,6 @@
                 <%
                     }
                 %>
-                <div onclick="location.href='admin/adminLogin.jsp'">관리자 로그인</div>
             </div>
         </div>
         
